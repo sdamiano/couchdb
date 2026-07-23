@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0078d7">
+    <title>Gestión de Personal Offline</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png">
+    <style>
+        :root {
+            color-scheme: light dark;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 1rem;
+            background: #f5f7fb;
+            color: #18202f;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #d9e0ec;
+            border-radius: 14px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-top: 0.75rem;
+        }
+
+        input, button {
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 44px;
+            border-radius: 10px;
+            border: 1px solid #b8c2d6;
+            padding: 0.7rem;
+            font-size: 1rem;
+        }
+
+        button {
+            margin-top: 1rem;
+            border: 0;
+            background: #0078d7;
+            color: #ffffff;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .status {
+            padding: 0.75rem;
+            border-radius: 10px;
+            background: #eaf4ff;
+            border: 1px solid #b7dcff;
+        }
+
+        .muted {
+            color: #59657a;
+            font-size: 0.92rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #101827;
+                color: #f8fafc;
+            }
+
+            .card {
+                background: #172033;
+                border-color: #2a3954;
+            }
+
+            input {
+                background: #0f172a;
+                color: #f8fafc;
+                border-color: #475569;
+            }
+
+            .status {
+                background: #10243d;
+                border-color: #245985;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="card">
+            <h1>Gestión de Personal</h1>
+            <p class="muted">
+                App offline-first: guarda primero en este dispositivo y sincroniza con CouchDB cuando hay conexión.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Nuevo registro</h2>
+            <form id="formPersona">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" autocomplete="given-name" required>
+
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" autocomplete="family-name" required>
+
+                <label for="dni">DNI</label>
+                <input type="text" id="dni" name="dni" inputmode="numeric" autocomplete="off" required>
+
+                <button type="submit">Guardar offline</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Estado</h2>
+            <p id="estado" class="status">Iniciando...</p>
+            <p id="contador" class="muted">Registros locales: 0</p>
+        </section>
+
+        <section class="card">
+            <h2>Últimos registros locales</h2>
+            <ul id="listaPersonas"></ul>
+        </section>
+    </main>
+
+    <script src="/config.local.js"></script>
+    <script src="/pouchdb.min.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
