@@ -1,9 +1,9 @@
-// Copy this file to config.local.js and adjust it for your local CouchDB.
+// Copiá este archivo como config.local.js y ajustalo para tu CouchDB local.
 //
-// IMPORTANT:
-// - Do not commit config.local.js.
-// - For a public demo, use a limited CouchDB user, never an admin password.
-// - A frontend/PWA cannot hide secrets. Anything here is visible to the browser user.
+// IMPORTANTE:
+// - No subás config.local.js al repositorio.
+// - Para una demo pública, usá un usuario limitado de CouchDB, nunca una contraseña de administrador.
+// - Un frontend/PWA no puede ocultar secretos. Todo lo que pongas acá será visible para quien use el navegador.
 
 window.APP_CONFIG = {
     couchdb: {
@@ -12,12 +12,13 @@ window.APP_CONFIG = {
         dbName: "personal",
         localDbName: "personal",
 
-        // Leave empty for CouchDB without auth, or set a limited demo user.
+        // Dejar vacío para CouchDB sin autenticación, o configurar un usuario limitado para la demo.
         username: "",
         password: "",
 
-        // "auto" uses the current app hostname plus localhost fallbacks on desktop.
-        // You can also force hosts, e.g. ["192.168.0.169", "localhost"].
+        // "auto" usa el hostname actual de la app y agrega alternativas localhost en escritorio.
+        // También podés forzar hosts, por ejemplo: ["192.168.0.169", "localhost"].
         hostCandidates: "auto"
     }
 };
+
